@@ -1,11 +1,17 @@
 [
   {
-    "task": "Write a Python function that validates an AWS S3 bucket name according to AWS naming rules (3-63 characters, lowercase letters, numbers, and hyphens only, must start and end with letter or number)"
+    "task": "Create a JSON configuration file for an AWS Lambda function that processes S3 events. The configuration should specify the function name, runtime, IAM role ARN, timeout, and memory allocation.",
+    "format": "json",
+    "solution_criteria": "Must include: valid function name following AWS naming conventions, supported Lambda runtime (e.g., python3.11, nodejs18.x), properly formatted IAM role ARN, timeout in seconds (1-900), memory allocation in MB (128-10240 in 1MB increments), and valid JSON syntax"
   },
   {
-    "task": "Write a regex pattern that matches valid AWS IAM role ARNs in the format: arn:aws:iam::account-id:role/role-name"
+    "task": "Write a Python function that validates AWS S3 bucket names according to AWS naming rules. The function should accept a string and return True if valid, False otherwise.",
+    "format": "python",
+    "solution_criteria": "Must validate: bucket name length (3-63 characters), lowercase letters only (no uppercase), numbers and hyphens allowed, starts and ends with letter or number, no consecutive hyphens, no IP address format (e.g., 192.168.1.1), returns boolean value"
   },
   {
-    "task": "Write a Python function that extracts the region and service name from an AWS ARN string (e.g., 'arn:aws:s3:us-east-1:123456789012:bucket/my-bucket')"
+    "task": "Create a regular expression that matches valid AWS IAM role ARNs in the format: arn:aws:iam::account-id:role/role-name",
+    "format": "regex",
+    "solution_criteria": "Must match: 'arn:aws:iam::' prefix, 12-digit account ID (or condition for root account), 'role/' followed by role name, role name can contain alphanumeric characters, hyphens, and underscores, must reject malformed ARNs, should allow optional path prefix (e.g., /service/)"
   }
 ]
