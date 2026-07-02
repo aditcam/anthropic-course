@@ -1,0 +1,70 @@
+[
+  {
+    "output": "```json\n[\n  \"Enlightenment\",\n  \"Reason\",\n  \"Western Ethical Frameworks\",\n  \"Seventeenth Century History\",\n  \"Kant's Philosophy\",\n  \"Categorical Imperative\",\n  \"Empiricist Skepticism\",\n  \"Moral Relativism\",\n  \"Religious Authority\",\n  \"Universalism\",\n  \"Power Structures\",\n  \"Colonial Contexts\",\n  \"European Intellectual Dominance\",\n  \"Moral Philosophy\",\n  \"Transcendent Principles\",\n  \"Historically Contingent Practice\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The Enlightenment's conception of reason fundamentally transformed Western ethical frameworks, yet this philosophical shift was deeply rooted in historical circumstances of the seventeenth century. Kant's categorical imperative emerged as a response to both empiricist skepticism and the moral relativism that threatened traditional religious authority. However, contemporary historians argue that the universalist pretensions of Enlightenment ethics obscured the particular power structures and colonial contexts that enabled European intellectual dominance. The tension between reason as a transcendent principle and reason as a historically contingent practice remains unresolved in modern moral philosophy, challenging us to reconsider whether Enlightenment values can be salvaged without reproducing their problematic universalism."
+      },
+      "solution_criteria": [
+        "Extracts distinct topics without conflating overlapping themes (e.g., separates Enlightenment philosophy from its historical context, and ethical frameworks from colonial critique)",
+        "Includes all major topics mentioned: Enlightenment, reason, ethics/moral philosophy, Kant, empiricism, historical context, colonialism, and universalism",
+        "Returns output as a JSON array of strings with clear, concise topic labels"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a humanities passage containing overlapping themes like philosophy, history, and ethics to verify accurate topic differentiation and extraction"
+    },
+    "score": 9,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It also satisfies the secondary criteria by including all major topics (Enlightenment, reason, ethics/moral philosophy, Kant, empiricism, historical context, colonialism, universalism) and maintaining clear separation between distinct themes. The topic labels are generally concise and clear, though a few could be more streamlined. The extraction is comprehensive and accurate."
+  },
+  {
+    "output": "```json\n[\n  \"CRISPR-Cas9 Gene Editing\",\n  \"Alzheimer's Disease\",\n  \"Neuroinflammation\",\n  \"Adeno-Associated Virus Vectors\",\n  \"NLRP3 Inflammasome\",\n  \"Transgenic 5xFAD Mice\",\n  \"Quantitative Proteomics\",\n  \"Pro-inflammatory Cytokines\",\n  \"Amyloid-beta Accumulation\",\n  \"Electrophysiological Recordings\",\n  \"Long-term Potentiation\",\n  \"Spatial Cognition\",\n  \"Morris Water Maze\",\n  \"Transcriptomic Profiling\",\n  \"Microglial Activation\",\n  \"Neuroprotective Genes\",\n  \"Cognitive Decline\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "This study investigates the efficacy of CRISPR-Cas9 gene editing in mitigating neuroinflammation associated with Alzheimer's disease (AD) pathogenesis. We employed adeno-associated virus (AAV) vectors to deliver sgRNA targeting NLRP3 inflammasome components in transgenic 5xFAD mice. Quantitative proteomics analysis revealed a 67% reduction in pro-inflammatory cytokines (IL-1\u03b2, TNF-\u03b1) and a corresponding 52% decrease in amyloid-beta (A\u03b2) accumulation in hippocampal tissue. Electrophysiological recordings demonstrated restored long-term potentiation (LTP) and improved spatial cognition in Morris water maze trials. Transcriptomic profiling identified downregulation of microglial activation markers (Iba1, CD11b) and upregulation of neuroprotective genes. These findings suggest CRISPR-mediated NLRP3 suppression represents a promising therapeutic approach for AD-related cognitive decline."
+      },
+      "solution_criteria": [
+        "Extracts all major topics including molecular techniques (CRISPR-Cas9, AAV vectors), biological targets (NLRP3, A\u03b2), disease context (Alzheimer's disease), and methodologies (proteomics, electrophysiology, transcriptomics)",
+        "Preserves domain-specific terminology and acronyms (NLRP3, sgRNA, LTP, 5xFAD) as topic identifiers",
+        "Returns output as a valid JSON array of strings"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a highly technical scientific abstract using domain-specific jargon and acronyms to ensure the prompt handles specialized vocabulary and maintains topic clarity"
+    },
+    "score": 7,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics without commentary, and the response contains only the JSON array. It demonstrates strong coverage of major topics across molecular techniques, biological targets, disease context, and methodologies, with appropriate preservation of domain-specific terminology. However, it has notable omissions of explicitly mentioned topics (sgRNA, specific cytokines IL-1\u03b2 and TNF-\u03b1, hippocampal tissue) that should have been extracted. The solution captures approximately 85-90% of extractable topics but misses several that are directly stated in the passage."
+  },
+  {
+    "output": "```json\n[\n  \"Income Inequality\",\n  \"Gini Coefficients\",\n  \"Lorenz Curves\",\n  \"Healthcare Accessibility\",\n  \"Health Disparities\",\n  \"Preventive Care Utilization\",\n  \"Econometric Analysis\",\n  \"Longitudinal Studies\",\n  \"OECD Nations\",\n  \"Redistributive Fiscal Policies\",\n  \"Progressive Taxation\",\n  \"Social Transfers\",\n  \"Welfare State Regimes\",\n  \"GDP Per Capita\",\n  \"Education Levels\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent econometric analyses demonstrate that income inequality, measured through Gini coefficients and Lorenz curves, significantly influences policy outcomes in healthcare accessibility. A longitudinal study spanning 15 OECD nations found that a 0.05 increase in the Gini coefficient correlated with a 12% reduction in preventive care utilization among lower-income quintiles, controlling for GDP per capita and education levels. These findings suggest that redistributive fiscal policies, including progressive taxation and targeted social transfers, may serve as effective interventions to reduce health disparities, though implementation varies substantially across welfare state regimes."
+      },
+      "solution_criteria": [
+        "Extracts all major cross-domain topics spanning social science (inequality, policy), statistics (Gini coefficients, Lorenz curves, econometric analysis), and policy analysis (fiscal policy, healthcare accessibility)",
+        "Correctly identifies distinct concepts even when they are tightly integrated within sentences",
+        "Returns output as a JSON array of strings"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a short interdisciplinary passage that blends social science, statistics, and policy analysis to assess how the prompt handles cross-domain concepts and boundaries"
+    },
+    "score": 8,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It strongly satisfies the secondary criteria by extracting topics across all three domains and correctly identifying distinct concepts. However, the inclusion of control variables (GDP Per Capita, Education Levels) as primary topics represents a minor conceptual error\u2014these are mentioned as statistical controls, not as substantive topics being investigated. The passage's focus is on the relationship between income inequality and healthcare outcomes, with GDP and education serving as confounding variables to control for, not as primary topics of analysis. This is a minor deficiency that doesn't violate mandatory requirements but slightly weakens adherence to the spirit of 'major cross-domain topics.'"
+  },
+  {
+    "output": "```json\n[\n  \"Organizational Hierarchies\",\n  \"Information Dissemination\",\n  \"Institutional Change\",\n  \"Legacy Systems\",\n  \"Digital Infrastructure\",\n  \"Interpersonal Dynamics\",\n  \"Resource Access\",\n  \"Decision-Making Authority\",\n  \"Informal Communication Networks\",\n  \"Formal Communication Channels\",\n  \"Structural Barriers\",\n  \"Upward Mobility\",\n  \"Role Expectations\",\n  \"Organizational Restructuring\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The investigation examined how organizational hierarchies influence information dissemination patterns during periods of institutional change. Employees navigated competing priorities as legacy systems interfaced with newly implemented digital infrastructure, while simultaneously managing interpersonal dynamics shaped by differential access to resources and decision-making authority. The study revealed that informal communication networks often circumvented formal channels, particularly when individuals perceived structural barriers to upward mobility or faced ambiguity regarding role expectations in the reorganized framework."
+      },
+      "solution_criteria": [
+        "Extracts both explicit topics (organizational hierarchies, information dissemination, digital infrastructure) and implicit topics that must be inferred from context (change management, power dynamics, organizational communication)",
+        "Identifies subtopics and related concepts embedded within discussions (legacy systems, informal networks, structural barriers, role ambiguity)",
+        "Returns results as a valid JSON array of strings with no additional fields or formatting"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a passage containing implicit topics and subtopics where main subjects must be inferred from context rather than explicit keywords to evaluate extraction depth"
+    },
+    "score": 7,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary or fields. It successfully extracts explicit topics and many implicit/inferred concepts as required by the secondary criteria. However, it falls short on the secondary criteria by missing some important implicit topics that should be inferred from context (particularly 'Change Management' and 'Power Dynamics'), which are central themes in the passage. The inclusion of 'Organizational Restructuring' is reasonable but somewhat overlaps with 'Institutional Change.' Overall, the solution demonstrates strong topic extraction but incomplete coverage of inferential topics."
+  }
+]

@@ -1,0 +1,256 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">4</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">7.8 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">100.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a humanities passage containing overlapping themes like philosophy, history, and ethics to verify accurate topic differentiation and extraction</td>
+                <td class="prompt-inputs"><strong>content:</strong> The Enlightenment's conception of reason fundamentally transformed Western ethical frameworks, yet this philosophical shift was deeply rooted in historical circumstances of the seventeenth century. Kant's categorical imperative emerged as a response to both empiricist skepticism and the moral relativism that threatened traditional religious authority. However, contemporary historians argue that the universalist pretensions of Enlightenment ethics obscured the particular power structures and colonial contexts that enabled European intellectual dominance. The tension between reason as a transcendent principle and reason as a historically contingent practice remains unresolved in modern moral philosophy, challenging us to reconsider whether Enlightenment values can be salvaged without reproducing their problematic universalism.</td>
+                <td class="criteria">• Extracts distinct topics without conflating overlapping themes (e.g., separates Enlightenment philosophy from its historical context, and ethical frameworks from colonial critique)<br>• Includes all major topics mentioned: Enlightenment, reason, ethics/moral philosophy, Kant, empiricism, historical context, colonialism, and universalism<br>• Returns output as a JSON array of strings with clear, concise topic labels</td>
+                <td class="output"><pre>```json
+[
+  "Enlightenment",
+  "Reason",
+  "Western Ethical Frameworks",
+  "Seventeenth Century History",
+  "Kant's Philosophy",
+  "Categorical Imperative",
+  "Empiricist Skepticism",
+  "Moral Relativism",
+  "Religious Authority",
+  "Universalism",
+  "Power Structures",
+  "Colonial Contexts",
+  "European Intellectual Dominance",
+  "Moral Philosophy",
+  "Transcendent Principles",
+  "Historically Contingent Practice"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It also satisfies the secondary criteria by including all major topics (Enlightenment, reason, ethics/moral philosophy, Kant, empiricism, historical context, colonialism, universalism) and maintaining clear separation between distinct themes. The topic labels are generally concise and clear, though a few could be more streamlined. The extraction is comprehensive and accurate.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a highly technical scientific abstract using domain-specific jargon and acronyms to ensure the prompt handles specialized vocabulary and maintains topic clarity</td>
+                <td class="prompt-inputs"><strong>content:</strong> This study investigates the efficacy of CRISPR-Cas9 gene editing in mitigating neuroinflammation associated with Alzheimer's disease (AD) pathogenesis. We employed adeno-associated virus (AAV) vectors to deliver sgRNA targeting NLRP3 inflammasome components in transgenic 5xFAD mice. Quantitative proteomics analysis revealed a 67% reduction in pro-inflammatory cytokines (IL-1β, TNF-α) and a corresponding 52% decrease in amyloid-beta (Aβ) accumulation in hippocampal tissue. Electrophysiological recordings demonstrated restored long-term potentiation (LTP) and improved spatial cognition in Morris water maze trials. Transcriptomic profiling identified downregulation of microglial activation markers (Iba1, CD11b) and upregulation of neuroprotective genes. These findings suggest CRISPR-mediated NLRP3 suppression represents a promising therapeutic approach for AD-related cognitive decline.</td>
+                <td class="criteria">• Extracts all major topics including molecular techniques (CRISPR-Cas9, AAV vectors), biological targets (NLRP3, Aβ), disease context (Alzheimer's disease), and methodologies (proteomics, electrophysiology, transcriptomics)<br>• Preserves domain-specific terminology and acronyms (NLRP3, sgRNA, LTP, 5xFAD) as topic identifiers<br>• Returns output as a valid JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "CRISPR-Cas9 Gene Editing",
+  "Alzheimer's Disease",
+  "Neuroinflammation",
+  "Adeno-Associated Virus Vectors",
+  "NLRP3 Inflammasome",
+  "Transgenic 5xFAD Mice",
+  "Quantitative Proteomics",
+  "Pro-inflammatory Cytokines",
+  "Amyloid-beta Accumulation",
+  "Electrophysiological Recordings",
+  "Long-term Potentiation",
+  "Spatial Cognition",
+  "Morris Water Maze",
+  "Transcriptomic Profiling",
+  "Microglial Activation",
+  "Neuroprotective Genes",
+  "Cognitive Decline"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">7</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics without commentary, and the response contains only the JSON array. It demonstrates strong coverage of major topics across molecular techniques, biological targets, disease context, and methodologies, with appropriate preservation of domain-specific terminology. However, it has notable omissions of explicitly mentioned topics (sgRNA, specific cytokines IL-1β and TNF-α, hippocampal tissue) that should have been extracted. The solution captures approximately 85-90% of extractable topics but misses several that are directly stated in the passage.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a short interdisciplinary passage that blends social science, statistics, and policy analysis to assess how the prompt handles cross-domain concepts and boundaries</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent econometric analyses demonstrate that income inequality, measured through Gini coefficients and Lorenz curves, significantly influences policy outcomes in healthcare accessibility. A longitudinal study spanning 15 OECD nations found that a 0.05 increase in the Gini coefficient correlated with a 12% reduction in preventive care utilization among lower-income quintiles, controlling for GDP per capita and education levels. These findings suggest that redistributive fiscal policies, including progressive taxation and targeted social transfers, may serve as effective interventions to reduce health disparities, though implementation varies substantially across welfare state regimes.</td>
+                <td class="criteria">• Extracts all major cross-domain topics spanning social science (inequality, policy), statistics (Gini coefficients, Lorenz curves, econometric analysis), and policy analysis (fiscal policy, healthcare accessibility)<br>• Correctly identifies distinct concepts even when they are tightly integrated within sentences<br>• Returns output as a JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "Income Inequality",
+  "Gini Coefficients",
+  "Lorenz Curves",
+  "Healthcare Accessibility",
+  "Health Disparities",
+  "Preventive Care Utilization",
+  "Econometric Analysis",
+  "Longitudinal Studies",
+  "OECD Nations",
+  "Redistributive Fiscal Policies",
+  "Progressive Taxation",
+  "Social Transfers",
+  "Welfare State Regimes",
+  "GDP Per Capita",
+  "Education Levels"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">8</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It strongly satisfies the secondary criteria by extracting topics across all three domains and correctly identifying distinct concepts. However, the inclusion of control variables (GDP Per Capita, Education Levels) as primary topics represents a minor conceptual error—these are mentioned as statistical controls, not as substantive topics being investigated. The passage's focus is on the relationship between income inequality and healthcare outcomes, with GDP and education serving as confounding variables to control for, not as primary topics of analysis. This is a minor deficiency that doesn't violate mandatory requirements but slightly weakens adherence to the spirit of 'major cross-domain topics.'</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit topics and subtopics where main subjects must be inferred from context rather than explicit keywords to evaluate extraction depth</td>
+                <td class="prompt-inputs"><strong>content:</strong> The investigation examined how organizational hierarchies influence information dissemination patterns during periods of institutional change. Employees navigated competing priorities as legacy systems interfaced with newly implemented digital infrastructure, while simultaneously managing interpersonal dynamics shaped by differential access to resources and decision-making authority. The study revealed that informal communication networks often circumvented formal channels, particularly when individuals perceived structural barriers to upward mobility or faced ambiguity regarding role expectations in the reorganized framework.</td>
+                <td class="criteria">• Extracts both explicit topics (organizational hierarchies, information dissemination, digital infrastructure) and implicit topics that must be inferred from context (change management, power dynamics, organizational communication)<br>• Identifies subtopics and related concepts embedded within discussions (legacy systems, informal networks, structural barriers, role ambiguity)<br>• Returns results as a valid JSON array of strings with no additional fields or formatting</td>
+                <td class="output"><pre>```json
+[
+  "Organizational Hierarchies",
+  "Information Dissemination",
+  "Institutional Change",
+  "Legacy Systems",
+  "Digital Infrastructure",
+  "Interpersonal Dynamics",
+  "Resource Access",
+  "Decision-Making Authority",
+  "Informal Communication Networks",
+  "Formal Communication Channels",
+  "Structural Barriers",
+  "Upward Mobility",
+  "Role Expectations",
+  "Organizational Restructuring"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-medium">7</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary or fields. It successfully extracts explicit topics and many implicit/inferred concepts as required by the secondary criteria. However, it falls short on the secondary criteria by missing some important implicit topics that should be inferred from context (particularly 'Change Management' and 'Power Dynamics'), which are central themes in the passage. The inclusion of 'Organizational Restructuring' is reasonable but somewhat overlaps with 'Institutional Change.' Overall, the solution demonstrates strong topic extraction but incomplete coverage of inferential topics.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
